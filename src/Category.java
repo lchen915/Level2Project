@@ -2,7 +2,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Category {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Category implements ActionListener {
 	JButton erVerb = new JButton ("-ER VERBS");
 	JButton irVerb = new JButton ("-IR VERBS");
 	JButton reVerb = new JButton ("-RE VERBS");
@@ -24,8 +27,21 @@ public class Category {
 		irVerb.setBounds(0,140,600,140);
 		reVerb.setBounds(0,280,600,140);
 		irregularVerbs.setBounds(0,420,600,140);
+		erVerb.addActionListener(this);
+		irVerb.addActionListener(this);
+		reVerb.addActionListener(this);
+		irregularVerbs.addActionListener(this);
 	}
-	
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		JButton clicked = (JButton)e.getSource();
+		if (clicked == erVerb) {
+			new Verb();
+			window2.setVisible(false);
+		}
+	}
 	
 	
 }
