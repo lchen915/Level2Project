@@ -36,13 +36,15 @@ public class Verb implements ActionListener {
 		parlerConj.setBounds(230, 90, 100, 120);
 		startGame.setBounds(30, 300, 100, 50);
 		memorize.setBounds(30, 220, 600, 20);
+		startGame.addActionListener(this);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		JButton clicked = (JButton)e.getSource();
 		if (clicked == startGame) {
-			new Game();
+			new GameWindow();
+			System.out.print("startgame");
 			window3.setVisible(false);
 		}
 	}
