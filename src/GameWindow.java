@@ -28,6 +28,7 @@ public class GameWindow implements KeyListener, MouseListener, MouseMotionListen
 		panel2.setLayout(new BoxLayout(panel2, BoxLayout.X_AXIS));
 		JTextField answer = new JTextField();
 		answer.setHorizontalAlignment(SwingConstants.LEFT);
+		answer.addKeyListener(this);
 		panel2.add(answer);
 		panel=new GamePanel();
 		window.setVisible(true);
