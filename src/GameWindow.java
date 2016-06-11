@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
-public class GameWindow implements KeyListener, MouseListener, MouseMotionListener{
+public class GameWindow extends GamePanel implements KeyListener, MouseListener, MouseMotionListener{
 	GamePanel panel;
 	JPanel panel2 = new JPanel();
 	JTextField answer = new JTextField();
@@ -26,7 +26,6 @@ public class GameWindow implements KeyListener, MouseListener, MouseMotionListen
 		window.add(panel2, BorderLayout.SOUTH);
 		panel2.setPreferredSize(new Dimension(window.getWidth(),30));
 		panel2.setLayout(new BoxLayout(panel2, BoxLayout.X_AXIS));
-		JTextField answer = new JTextField();
 		answer.setHorizontalAlignment(SwingConstants.LEFT);
 		answer.addKeyListener(this);
 		panel2.add(answer);
@@ -43,6 +42,16 @@ public class GameWindow implements KeyListener, MouseListener, MouseMotionListen
 		new GameWindow();
 		
 	}
+	
+	/*public boolean checkAnswer (String userAnswer, String actualAnswer) {
+		while (object1.x<500) {
+			System.out.println("less than 500");
+		}
+		return true;
+	}*/
+	
+	
+	
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
