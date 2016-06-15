@@ -31,6 +31,10 @@ public class GameObject {
 	public String getPronoun () {
 		return pronoun1;
 	}
+	
+	public int getX() {
+		return x;
+	}
 
 	public void draw (Graphics g, Color c) {
 		g.setColor(Color.BLUE);
@@ -43,4 +47,6 @@ public class GameObject {
 	public void update() {
 		x++;
 	}
+	
+	
 }

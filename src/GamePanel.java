@@ -43,19 +43,25 @@ public class GamePanel extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		move();
+		//System.out.println("action performed");
+		//System.out.println(e.getSource());
+	}
+	
+	public synchronized void move() {
 		repaint();
 		object1.update();
-		object2.update();
+		//object2.update();
 		if ((object1.x<500)&&(object1.x>0)) {
 			
 		}
-		if (object1.x>=500) {
-			System.out.println(object1.getPronoun());
+		if (object1.getX()>=500) {
+			System.out.println("greater than 500");
+			//System.out.println(object1.getPronoun());
 			object1 = new GameObject(-220,random.nextInt(400) +0,220,30);
 		}
-		if (object2.x>=500) {
+		/*if (object2.x>=500) {
 			object2 = new GameObject(-220,random.nextInt(400) +0,220,30);
-		}
+		}*/
 	}
-
 }

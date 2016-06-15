@@ -29,7 +29,6 @@ public class GameWindow extends GamePanel implements KeyListener, MouseListener,
 		answer.setHorizontalAlignment(SwingConstants.LEFT);
 		answer.addKeyListener(this);
 		panel2.add(answer);
-		panel=new GamePanel();
 		window.setVisible(true);
 		window.setSize(500,500);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,7 +39,7 @@ public class GameWindow extends GamePanel implements KeyListener, MouseListener,
 	}
 	public static void main (String [] args) {
 		new GameWindow();
-		
+		System.out.println("game window");
 	}
 	
 	/*public boolean checkAnswer (String userAnswer, String actualAnswer) {
