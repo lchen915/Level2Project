@@ -12,7 +12,6 @@ public class GamePanel extends JPanel implements ActionListener{
 	Timer timer1;
 	GameObject object1;
 	GameObject object2;
-	GameObject object4;
 	int x;
 	int y;
 	int width;
@@ -24,8 +23,7 @@ public class GamePanel extends JPanel implements ActionListener{
 	Random random = new Random();	
 	GamePanel() {
 		System.out.println("gamepanel");
-		timer1 = new Timer(10, this);
-		//timer is 8, this
+		timer1 = new Timer(5, this);
 		timer1.start();
 		x=1;
 		y=1;
@@ -44,24 +42,22 @@ public class GamePanel extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		move();
-		//System.out.println("action performed");
-		//System.out.println(e.getSource());
 	}
+
 	
-	public synchronized void move() {
+	public void move() {
 		repaint();
 		object1.update();
-		//object2.update();
+		object2.update();
 		if ((object1.x<500)&&(object1.x>0)) {
-			
+			System.out.print(object1.getPronoun());
+			System.out.println(object1.getVerb());
 		}
 		if (object1.getX()>=500) {
-			System.out.println("greater than 500");
-			//System.out.println(object1.getPronoun());
 			object1 = new GameObject(-220,random.nextInt(400) +0,220,30);
 		}
-		/*if (object2.x>=500) {
+		if (object2.x>=500) {
 			object2 = new GameObject(-220,random.nextInt(400) +0,220,30);
-		}*/
+		}
 	}
 }

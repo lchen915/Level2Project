@@ -12,7 +12,7 @@ public class GameObject {
 	final String [] pronouns = {"je ______________ ", "tu ______________ ", "il/elle/on ________ ", 
 			"nous ____________ ", "vous ___________ ", "ils/elles  ________ "};
 	int randomVerb;
-	final String [] verbs  = {"aimer", "arriver", "chanter", "chercher", "danser", 
+	final String [] verbs  = {"chanter", "chercher", "danser", 
 			"demander",  "donner", "fermer", "jouer",  "laver", 
 			"parler", "penser", "travailler", "trouver", "visiter"};
 	String pronoun1;
@@ -23,13 +23,17 @@ public class GameObject {
 		this.width=width;
 		this.height=height;
 		randomPronoun = random.nextInt(5);
-		randomVerb = random.nextInt(14);
+		randomVerb = random.nextInt(12);
 		pronoun1 = pronouns[randomPronoun];
 		verb1 = "(" + verbs[randomVerb] + ")";
 	}
 	
 	public String getPronoun () {
 		return pronoun1;
+	}
+	
+	public String getVerb() {
+		return verb1;
 	}
 	
 	public int getX() {

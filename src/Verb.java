@@ -44,7 +44,7 @@ public class Verb implements ActionListener {
 		JButton clicked = (JButton)e.getSource();
 		if (clicked == startGame) {
 			new GameWindow();
-			System.out.print("startgame");
+			System.out.println("startgame");
 			window3.setVisible(false);
 		}
 	}

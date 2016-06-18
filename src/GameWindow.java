@@ -14,13 +14,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
-public class GameWindow extends GamePanel implements KeyListener, MouseListener, MouseMotionListener{
-	GamePanel panel;
+public class GameWindow implements KeyListener{
+	GamePanel gamePanel;
 	JPanel panel2 = new JPanel();
 	JTextField answer = new JTextField();
 	GameWindow() {
 		JFrame window = new JFrame();
-		panel=new GamePanel();
+		gamePanel=new GamePanel();
 		window.setLayout(new BorderLayout());
 		panel2.setBorder(new BevelBorder(BevelBorder.LOWERED));
 		window.add(panel2, BorderLayout.SOUTH);
@@ -32,93 +32,40 @@ public class GameWindow extends GamePanel implements KeyListener, MouseListener,
 		window.setVisible(true);
 		window.setSize(500,500);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.add(panel);
+		window.add(gamePanel);
 		window.addKeyListener(this);
-		window.addMouseListener(this);
-		window.addMouseMotionListener(this);
-	}
-	public static void main (String [] args) {
-		new GameWindow();
-		System.out.println("game window");
 	}
 	
-	/*public boolean checkAnswer (String userAnswer, String actualAnswer) {
-		while (object1.x<500) {
-			System.out.println("less than 500");
+	public boolean checkAnswer(String userAnswer) {
+		if (userAnswer.equals("hello")) {
+			return true;
 		}
-		return true;
-	}*/
+		return false;
+	}
 	
 	
-	
-	@Override
-	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("mouseDragged");
-		InputManager.mouseDragged(e);
-		
-	}
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("mouseMoved");
-		InputManager.mouseMoved(e);
-		
-	}
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("mouseClicked");
-		InputManager.mouseClicked(e);
-		
-	}
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("mousePressed");
-		InputManager.mousePressed(e);
-		
-	}
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("mouseReleased");
-		InputManager.mouseReleased(e);
-		
-	}
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("mouseEntered");
-		InputManager.mouseEntered(e);
-		
-	}
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("mouseExcited");
-		InputManager.mouseExited(e);
-		
-	}
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("keyTyped");
+		//System.out.println("keyTyped");
 		InputManager.keyTyped(e);
-		
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("keyPressed");
+		//System.out.println("keyPressed");
 		InputManager.keyPressed(e);
-		
+		if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+			System.out.println(answer.getText());
+			System.out.println(checkAnswer(answer.getText()));
+		}
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("keyReleased");
+		//System.out.println("keyReleased");
 		InputManager.keyReleased(e);
 		
 	}
+
 }
