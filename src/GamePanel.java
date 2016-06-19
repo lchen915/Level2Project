@@ -23,7 +23,7 @@ public class GamePanel extends JPanel implements ActionListener{
 	Random random = new Random();	
 	GamePanel() {
 		System.out.println("gamepanel");
-		timer1 = new Timer(5, this);
+		timer1 = new Timer(8, this);
 		timer1.start();
 		x=1;
 		y=1;
@@ -34,7 +34,6 @@ public class GamePanel extends JPanel implements ActionListener{
 	}
 	
 	public void paintComponent(Graphics g) {
-		//g.fillRect(x, y, width, height);
 		object1.draw(g, Color.WHITE);
 		object2.draw(g, Color.WHITE);
 	}
@@ -43,15 +42,22 @@ public class GamePanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		move();
 	}
-
 	
+	public boolean checkAnswer1(String userAnswer) {
+		return object1.checkAnswer(userAnswer);
+	}
+	
+	public boolean checkAnswer2(String userAnswer) {
+		return object2.checkAnswer(userAnswer);
+	}
+
 	public void move() {
 		repaint();
 		object1.update();
 		object2.update();
 		if ((object1.x<500)&&(object1.x>0)) {
-			System.out.print(object1.getPronoun());
-			System.out.println(object1.getVerb());
+			//System.out.print(object1.getPronoun());
+			//System.out.println(object1.getVerb());
 		}
 		if (object1.getX()>=500) {
 			object1 = new GameObject(-220,random.nextInt(400) +0,220,30);

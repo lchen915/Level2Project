@@ -36,13 +36,6 @@ public class GameWindow implements KeyListener{
 		window.addKeyListener(this);
 	}
 	
-	public boolean checkAnswer(String userAnswer) {
-		if (userAnswer.equals("hello")) {
-			return true;
-		}
-		return false;
-	}
-	
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -57,7 +50,8 @@ public class GameWindow implements KeyListener{
 		InputManager.keyPressed(e);
 		if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 			System.out.println(answer.getText());
-			System.out.println(checkAnswer(answer.getText()));
+			System.out.println(gamePanel.checkAnswer1(answer.getText()) || gamePanel.checkAnswer2(answer.getText()));
+			answer.setText("");
 		}
 	}
 	@Override

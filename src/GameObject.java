@@ -22,8 +22,8 @@ public class GameObject {
 		this.y=y;
 		this.width=width;
 		this.height=height;
-		randomPronoun = random.nextInt(5);
-		randomVerb = random.nextInt(12);
+		randomPronoun = random.nextInt(6);
+		randomVerb = random.nextInt(13);
 		pronoun1 = pronouns[randomPronoun];
 		verb1 = "(" + verbs[randomVerb] + ")";
 	}
@@ -40,6 +40,37 @@ public class GameObject {
 		return x;
 	}
 
+	public boolean checkAnswer(String userAnswer) {
+		if ((getX()<500)&&(getX()>0)) {
+			if (getPronoun().substring(0,2).equals("je") || getPronoun().indexOf('o')!=-1 && getPronoun().substring(0, 10).equals("il/elle/on")) {
+				if (userAnswer.equals(getVerb().substring(1, getVerb().length()-3)+"e")) {
+					return true;
+				}
+			}
+			if (getPronoun().substring(0, 2).equals("tu")) {
+				if (userAnswer.equals(getVerb().substring(1, getVerb().length()-3)+"es")) {
+					return true;
+				}
+			}
+			if (getPronoun().substring(0, 4).equals("nous")) {
+				if (userAnswer.equals(getVerb().substring(1, getVerb().length()-3)+"ons")) {
+					return true;
+				}
+			}
+			if (getPronoun().substring(0, 4).equals("vous")) {
+				if (userAnswer.equals(getVerb().substring(1, getVerb().length()-3)+"ez")) {
+					return true;
+				}
+			}
+			if (getPronoun().substring(0, 9).equals("ils/elles")) {
+				if (userAnswer.equals(getVerb().substring(1, getVerb().length()-3)+"ent")) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 	public void draw (Graphics g, Color c) {
 		g.setColor(Color.BLUE);
 		g.fillRect(x, y, width, height);
