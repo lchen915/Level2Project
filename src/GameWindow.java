@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -51,7 +52,8 @@ public class GameWindow implements KeyListener{
 		if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 			System.out.println(answer.getText());
 			System.out.println(gamePanel.checkAnswer1(answer.getText()) || gamePanel.checkAnswer2(answer.getText()));
-			answer.setText("");
+			gamePanel.updateScore(answer.getText());
+			answer.setText("");			
 		}
 	}
 	@Override
