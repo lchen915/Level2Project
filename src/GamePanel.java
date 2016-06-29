@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -25,7 +26,7 @@ public class GamePanel extends JPanel implements ActionListener{
 	int actualScore;
 	GamePanel() {
 		System.out.println("gamepanel");
-		timer1 = new Timer(4, this);
+		timer1 = new Timer(6, this);
 		timer1.start();
 		x=1;
 		y=1;
@@ -74,14 +75,27 @@ public class GamePanel extends JPanel implements ActionListener{
 		if (object1.getX()>=500) {
 			if (object1.getVisibility()==true) {
 				actualScore-=1;
+				String correction = "";
+				while (! correction.equals(object1.getCorrectAnswer())) {
+						correction = JOptionPane.showInputDialog("You didn't type the correct answer in time. " 
+						+ "The correct conjugation of " + object1.getJustPronoun() + " " + object1.getVerb() + " is " 
+						+ object1.getCorrectAnswer() + ". Please type this below, then hit ENTER or click OK. Do not click CANCEL.");
+				}
+				System.out.println(correction);
 			}
 		object1 = new GameObject(-220,random.nextInt(400) +0,220,30);
 		}
 		if (object2.getX()>=500) {
 			if (object2.getVisibility()==true) {
 				actualScore-=1;
-			}
+				String correction2 = "";
+				while (! correction2.equals(object2.getCorrectAnswer())) {
+						correction2 = JOptionPane.showInputDialog("You didn't type the correct answer in time. " 
+						+ "The correct conjugation of " + object2.getJustPronoun() + " " + object2.getVerb() + " is " 
+						+ object2.getCorrectAnswer() + ". Please type this below, then hit ENTER or click OK. Do not click CANCEL.");
+				}
 		object2 = new GameObject(-220,random.nextInt(400) +0,220,30);
 		}
+	}
 	}
 }

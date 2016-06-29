@@ -34,6 +34,22 @@ public class GameObject {
 		}
 	}
 	
+	public String getJustPronoun () {
+		if (pronoun1.substring(0,2).equals("je") || pronoun1.substring(0,2).equals("j'") || pronoun1.substring(0,2).equals("tu")) {
+			return pronoun1.substring(0,2);
+		}
+		if (pronoun1.substring(0,4).equals("nous") || pronoun1.substring(0,4).equals("vous")) {
+			return pronoun1.substring(0,4);
+		}
+		if (pronoun1.equals("il/elle/on ________ ")) {
+			return pronoun1.substring(0,10);
+		}
+		if (pronoun1.equals("ils/elles  ________ ")) {
+			return pronoun1.substring(0,9);
+		}
+		return ("");
+	}
+	
 	public String getPronoun () {
 		return pronoun1;
 	}
@@ -45,39 +61,33 @@ public class GameObject {
 	public int getX() {
 		return x;
 	}
+	
+	public String getCorrectAnswer() {
+		if (getPronoun().substring(0,2).equals("je") ||  getPronoun().substring(0, 10).equals("il/elle/on")) {
+			return getJustPronoun() + " " + getVerb().substring(1, getVerb().length()-3)+"e";
+		}
+		if (getPronoun().substring(0,2).equals("j'")) {
+			return getJustPronoun() + getVerb().substring(1, getVerb().length()-3)+"e";
+		}
+		if (getPronoun().substring(0, 2).equals("tu")) {
+			return getJustPronoun() + " " + getVerb().substring(1, getVerb().length()-3)+"es";
+		}
+		if (getPronoun().substring(0, 4).equals("nous")) {
+			return getJustPronoun() + " " + getVerb().substring(1, getVerb().length()-3)+"ons";
+		}
+		if (getPronoun().substring(0, 4).equals("vous")) {
+			return getJustPronoun() + " " + getVerb().substring(1, getVerb().length()-3)+"ez";
+		}
+		else {
+			return getJustPronoun() + " " + getVerb().substring(1, getVerb().length()-3)+"ent";
+		}
+	}
 
 	public boolean checkAnswer(String userAnswer) {
 		if ((getX()<500)&&(getX()>0)) {
-			if (getPronoun().substring(0,2).equals("je") || getPronoun().substring(0,2).equals("j'")
-					||  getPronoun().indexOf('o')!=-1 && getPronoun().substring(0, 10).equals("il/elle/on")) {
-				if (userAnswer.equals(getVerb().substring(1, getVerb().length()-3)+"e")) {
-					show = false;
-					return true;
-				}
-			}
-			if (getPronoun().substring(0, 2).equals("tu")) {
-				if (userAnswer.equals(getVerb().substring(1, getVerb().length()-3)+"es")) {
-					show = false;
-					return true;
-				}
-			}
-			if (getPronoun().substring(0, 4).equals("nous")) {
-				if (userAnswer.equals(getVerb().substring(1, getVerb().length()-3)+"ons")) {
-					show = false;
-					return true;
-				}
-			}
-			if (getPronoun().substring(0, 4).equals("vous")) {
-				if (userAnswer.equals(getVerb().substring(1, getVerb().length()-3)+"ez")) {
-					show = false;
-					return true;
-				}
-			}
-			if (getPronoun().substring(0, 9).equals("ils/elles")) {
-				if (userAnswer.equals(getVerb().substring(1, getVerb().length()-3)+"ent")) {
-					show = false;
-					return true;
-				}
+			if (userAnswer.equals(getCorrectAnswer())) {
+				show = false;
+				return true;
 			}
 		}
 		return false;

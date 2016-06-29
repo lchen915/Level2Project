@@ -38,7 +38,7 @@ public class Category implements ActionListener {
 		// TODO Auto-generated method stub
 		JButton clicked = (JButton)e.getSource();
 		if (clicked == erVerb) {
-			new Verb();
+			new ErVerb();
 			window2.setVisible(false);
 		}
 	}

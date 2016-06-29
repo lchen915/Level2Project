@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Verb implements ActionListener {
+public class ErVerb implements ActionListener {
 	JLabel title = new JLabel ("<html>Conjugation for -ER Verbs in Present Tense");
 	JLabel instructions = new JLabel ("Instructions: Drop the -er to get the stem. Add these endings to the stem: ");
 	JLabel pronouns = new JLabel ("<html>Pronouns<br>Je<br>Tu<br>Il/Elle/On<br>Nous<br>Vous<br>Ils/Elles</html>");
@@ -15,7 +15,7 @@ public class Verb implements ActionListener {
 	JLabel memorize = new JLabel ("Memorize the endings. Click 'Start Game' when you are ready to play.");
 	JButton startGame = new JButton ("Start Game");
 	JFrame window3 = new JFrame();
-	Verb() {
+	ErVerb() {
 		window3.setVisible(true);
 		window3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel pan = new JPanel();
